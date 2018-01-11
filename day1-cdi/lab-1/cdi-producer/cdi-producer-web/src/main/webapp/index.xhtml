@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:jsf="http://xmlns.jcp.org/jsf">
+<head jsf:id="head">
+	<meta charset="utf-8" />
+	<title>CDI Producer Sample</title>
+</head>
+<body>
+	<h1>CDI Producer Sample</h1>
+	<form jsf:id="form">
+		<input type="text" jsf:value="#{sampleForm.name}"/>
+		<input type="submit" value="Submit"/>
+	</form>
+	<p>
+		Hello, #{sampleForm.name}
+	</p>
+	<H2>BeanManager.getBean(Class&lt;T&gt;)方式：</H2>
+	<dl>
+		<dt><strong> \#{loginUser} : </strong></dt>
+			<dd> #{loginUser} </dd>
+		<dt><strong> @Inject LoginUser loginUser : </strong></dt>
+			<dd> #{sample.loginUser} </dd>
+	</dl>
+	<H2>Instance&lt;T&gt;方式：</H2>
+	<dl>
+		<dt><strong> \#{clientHost} : </strong></dt>
+			<dd> #{clientHost} </dd>
+		<dt><strong> @Inject ClientHost clientHost : </strong></dt>
+			<dd> #{sample.clientHost} </dd>
+	</dl>
+</body>
+</html>

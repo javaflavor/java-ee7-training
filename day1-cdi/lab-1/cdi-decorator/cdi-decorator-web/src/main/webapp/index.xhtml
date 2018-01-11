@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:jsf="http://xmlns.jcp.org/jsf">
+<head jsf:id="head">
+	<meta charset="utf-8" />
+	<title>CDI Decorator Sample</title>
+</head>
+<body>
+	<h1>CDI Decorator Sample</h1>
+	<form jsf:id="form">
+		Message: <input type="text" jsf:value="#{recordForm.message}"/>
+		<input type="submit" value="Add" jsf:action="#{recordService.create(recordForm.toEntity())}"/>
+		<table>
+			<thead>
+				<tr>
+					<td><strong>No.</strong></td>
+					<td><strong>Message</strong></td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr jsfc="ui:repeat" value="#{recordService.findAll()}" var="record">
+				<tr>
+					<td>#{record.id}</td>
+					<td>#{record.message}</td>
+					<td>
+						<a jsf:action="#{recordService.remove(record.id)}">Delete</a>
+					</td>
+				</tr>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</body>
+</html>
