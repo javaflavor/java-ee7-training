@@ -1,7 +1,7 @@
 # Java EE 7 Training
 
 * [Day 1: CDI](./day1-cdi/)
-* [Day 2: JSF][./day2-jsf/)
+* [Day 2: JSF](./day2-jsf/)
 * Day 3: JAX-RS
 * Day 4: JPA (part 1)
 * Day 5: JPA (part 2)
