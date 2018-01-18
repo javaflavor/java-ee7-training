@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+<head jsf:id="head">
+	<meta charset="UTF-8"/>
+	<title>Bean Validation Sample</title>
+</head>
+<body jsf:id="body">
+	<form jsf:id="form">
+		First Name: <input type="text" jsf:id="firstName" jsf:value="#{personForm.firstName}"/>
+		<span style="color: #ff3300;" jsfc="h:message" for="firstName"></span>
+		<br /> 
+		Last Name: <input type="text" jsf:id="lastName" jsf:value="#{personForm.lastName}"/>
+       <span style="color: #ff3300;" jsfc="h:message" for="lastName"></span>
+		<br />
+       Age: <input type="text" jsf:id="age" jsf:value="#{personForm.age}"/> 
+       <span style="color: #ff3300;" jsfc="h:message" for="age"></span>
+       <br />
+       Mobile: <input type="text" jsf:id="mobile" jsf:value="#{personForm.mobile}" />
+       <span style="color: #ff3300;" jsfc="h:message" for="mobile"></span>
+       <br />
+       Nickname: <input type="text" jsf:id="nickname" jsf:value="#{personForm.nickname}" /> 
+       <span style="color: #ff3300;" jsfc="h:message" for="nickname"></span>
+       <br />
+		<input type="submit" jsf:action="#{personBean.create}" value="作成" /> 
+		<br />
+	</form>
+</body>
+</html>

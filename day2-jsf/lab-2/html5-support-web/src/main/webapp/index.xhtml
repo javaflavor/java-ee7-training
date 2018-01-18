@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+<head jsf:id="head">
+	<meta charset="UTF-8"/>
+	<title>Person - HTML5</title>
+</head>
+<body jsf:id="body">
+	<h3>JSF用HTML5サポートサンプル</h3>
+	<script type="text/javascript">
+	function showRangeVal(newVal){
+		document.getElementById("rangeVal").innerHTML=newVal;
+	}
+	</script>
+	<form jsf:id="form">
+		<table>
+		<tr><td>inputText:</td> 
+			<td><input type="text" id="text" required="true" autofocus="autofocus" jsf:value="#{form.text}"/></td></tr>
+		<tr><td>inputText(email):</td>
+			<td><input type="email" id="email" jsf:value="#{form.email}"/></td></tr>
+		<tr><td>inputText(date):</td>
+			<td><input type="date" id="datestring" jsf:value="#{form.dateString}"/></td></tr>
+		<tr><td>inputText(date):</td>
+			<td><input type="date" id="date" jsf:value="#{form.date}">
+					<f:convertDateTime pattern="yyyy-MM-dd" timeZone="Japan" />
+				</input>
+			</td></tr>
+		<tr><td>inputText(date):</td>
+<!-- 			<td><input type="date" id="sqldate" jsf:value="#{form.sqldate}" jsf:converter="SqlDateConverter"/></td></tr> -->
+			<td><input type="date" id="sqldate" jsf:value="#{form.sqldate}"/></td></tr>
+		<tr><td>inputText(time):</td>
+			<td><input type="time" id="timestring" jsf:value="#{form.timeString}"/></td></tr>
+		<tr><td>inputText(time):</td>
+			<td><input type="time" id="time" jsf:value="#{form.time}"/></td></tr>
+		<tr><td>inputText(range):</td>
+			<td><input type="range" id="range" min="0" max="100" jsf:value="#{form.range}" oninput="showRangeVal(this.value)" onchange="showRangeVal(this.value)"/><span id="rangeVal"/></td></tr>
+		<tr><td>inputSecret:</td>
+			<td><input type="password" id="secret" jsf:value="#{form.secret}"/></td></tr> 
+		<tr><td>inputTextarea:</td>
+			<td><textarea id="area" jsf:value="#{form.area}"/></td></tr>
+		<tr><td>selectBooleanCheckbox:</td>
+			<td><input type="checkbox" id="checked" jsf:value="#{form.checked}"/></td></tr>
+		<tr><td>selectManyCheckbox:</td>
+			<td><div jsfc="h:selectManyCheckbox" id="checks" value="#{form.checks}">
+					<input type="checkbox" jsfc="f:selectItem" itemValue="A" itemLabel="A" /><ui:remove>A</ui:remove>
+					<input type="checkbox" jsfc="f:selectItem" itemValue="B" itemLabel="B" /><ui:remove>B</ui:remove>
+					<input type="checkbox" jsfc="f:selectItem" itemValue="C" itemLabel="C" /><ui:remove>C</ui:remove>
+				</div></td></tr>
+		<tr><td>selectManyListbox:</td>
+			<td><select jsfc="h:selectManyListbox" id="list" value="#{form.list}">
+					<option jsfc="f:selectItem" itemValue="A" itemLabel="A"><ui:remove>A</ui:remove></option>
+					<option jsfc="f:selectItem" itemValue="B" itemLabel="B"><ui:remove>B</ui:remove></option>
+					<option jsfc="f:selectItem" itemValue="C" itemLabel="C"><ui:remove>C</ui:remove></option>
+				</select></td></tr>
+		<tr><td>selectManyMenu:</td>
+			<!-- Safari, Chromeではスクロールバーが出ないため、使うべきでない。 -->
+			<td><select jsfc="h:selectManyMenu" id="menus" value="#{form.menus}">
+					<option jsfc="f:selectItem" itemValue="A" itemLabel="A"><ui:remove>A</ui:remove></option>
+					<option jsfc="f:selectItem" itemValue="B" itemLabel="B"><ui:remove>B</ui:remove></option>
+					<option jsfc="f:selectItem" itemValue="C" itemLabel="C"><ui:remove>C</ui:remove></option>
+				</select></td></tr>
+		<tr><td>selectOneListbox:</td>
+			<td><select jsfc="h:selectOneListbox" id="item" value="#{form.item}">
+					<option jsfc="f:selectItem" itemValue="A" itemLabel="A"><ui:remove>A</ui:remove></option>
+					<option jsfc="f:selectItem" itemValue="B" itemLabel="B"><ui:remove>B</ui:remove></option>
+					<option jsfc="f:selectItem" itemValue="C" itemLabel="C"><ui:remove>C</ui:remove></option>
+				</select></td></tr>
+		<tr><td>selectOneMenu:</td>
+			<td><select jsfc="h:selectOneMenu" id="menu" value="#{form.menu}">
+					<option jsfc="f:selectItem" itemValue="A" itemLabel="A"><ui:remove>A</ui:remove></option>
+					<option jsfc="f:selectItem" itemValue="B" itemLabel="B"><ui:remove>B</ui:remove></option>
+					<option jsfc="f:selectItem" itemValue="C" itemLabel="C"><ui:remove>C</ui:remove></option>
+				</select></td></tr>
+		<tr><td>selectOneRadio:</td>
+			<td><div jsfc="h:selectOneRadio" id="radio" value="#{form.radio}">
+					<input type="radio" name="r1" jsfc="f:selectItem" itemValue="A" itemLabel="A" /><ui:remove>A</ui:remove>
+					<input type="radio" name="r1" jsfc="f:selectItem" itemValue="B" itemLabel="B" /><ui:remove>B</ui:remove>
+					<input type="radio" name="r1" jsfc="f:selectItem" itemValue="C" itemLabel="C" /><ui:remove>C</ui:remove>
+				</div></td></tr>
+		</table>
+		<input type="submit" value="Submit" jsf:action="#{form.submit}" />
+	</form>
+	<span jsfc="h:messages" showDetail="true"/> 
+</body>
+</html>

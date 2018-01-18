@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+<head jsf:id="head">
+	<meta charset="UTF-8"/>
+	<title>Bean Validation Sample</title>
+</head>
+<body jsf:id="body">
+	<form jsf:id="form">
+		Id: #{personForm.id} <input type="hidden" jsf:value="#{personForm.id}"/>
+		<br />
+		First Name: #{personForm.firstName}
+		<br />
+		Last Name: #{personForm.lastName}
+		<br />
+		Age: #{personForm.age}
+		<br />
+		Mobile: #{personForm.mobile}
+		<br />
+		Nickname: #{personForm.nickname}
+		<br />
+		<input type="submit" jsf:action="#{personBean.delete}" value="削除"/>
+	</form>
+</body>
+</html>

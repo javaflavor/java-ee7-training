@@ -1,0 +1,12 @@
+*.tmp
+*.bak
+*.swp
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Maven
+target/
+
