@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simple Java EE Web App (JAX-RS)</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	// 静的HTMLファイルの状態でエラーメッセージのデザインを確認するためのおまじない。
+	$(function() {
+		$('div.text-warning').text('Error message is here.')
+	})
+	</script>
+	<script type="text/javascript">
+	$(function() {
+        var form = $('#form');
+		form.submit(function (ev) {
+			// Prevent original submit.
+			ev.preventDefault();
+	
+			// Convert form to json.
+			var formdata = {};
+			$.each(form.serializeArray(), function(i, v) {
+				formdata[v.name] = v.value;
+			});
+
+			// Send Ajax request.
+	        $.ajax({
+	            type: form.attr('method'),
+	            url: form.attr('action'),
+	            contentType: "application/json; charset=utf-8",
+	            dataType: 'json',
+	            data: JSON.stringify(formdata),
+	            success: function (data) {
+	                refreshTable();
+	            },
+	            error : function (request, status, error) {
+	            	console.log("### error: "+error);
+	            	console.log("### status: "+status);
+	            	console.log("### responseText: "+request.responseText);
+		            console.log("### responseJSON: "+JSON.stringify(request.responseJSON));
+	            	$("html").html(request.responseText);
+		        }
+	        });	
+	    });
+	});	
+
+	// Save table tr as a template.
+	var row;
+	$(function() {
+		row = $('#table tbody').clone();
+	});
+
+	// Refresh table content by ajax request.
+	function refreshTable() {
+        $.getJSON('rs/persons', function (data) {
+           	$('#table tbody').empty();
+       		$.each(data, function(i, v) {
+           		var clone = row.clone();
+           		clone.find('td:nth-child(1)').text(v.id);
+           		clone.find('td:nth-child(2)').text(v.firstName);
+           		clone.find('td:nth-child(3)').text(v.lastName);
+           		clone.find('td:nth-child(4)').text(v.date);
+           		$('#table tbody').append(clone.html());
+       		});
+        });			
+	}
+	$(function() {
+		refreshTable();
+	});
+	</script>
+	<div class="container">
+		<form id="form" action="rs/persons" method="POST">
+			<div class="panel panel-default">
+				<div class="panel-heading">Input Form</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="firstName">First Name:</label>
+						<input class="form-control" type="text" name="firstName" placeholder="First Name"/>
+					</div>
+					<div class="form-group">
+						<label for="lastName">Last Name:</label>
+						<input class="form-control" type="text" name="lastName" placeholder="Last Name"/>
+					</div>
+					<div class="form-group">
+						<label for="date">Date:</label>
+						<input class="form-control" type="date" name="date"/>
+					</div>
+					<input type="submit"
+						class="btn btn-default"
+						value="Add" />
+				</div>
+			</div>
+		</form>
+		<table id="table" class="table table-condensed table-striped table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>#{person.id}</td>
+					<td>#{person.firstName}</td>
+					<td>#{person.lastName}</td>
+					<td>#{person.date}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

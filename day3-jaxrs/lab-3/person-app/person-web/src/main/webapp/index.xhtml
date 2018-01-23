@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+<head jsf:id="head">
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simple Java EE Web App (JSF to JAX-RS)</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	// 静的HTMLファイルの状態でエラーメッセージのデザインを確認するためのおまじない。
+	$(function() {
+		$('div.text-warning').text('Error message is here.')
+	})
+	</script>
+	<div class="container">
+		<form jsf:id="form">
+			<div class="panel panel-default">
+				<div class="panel-heading">Input Form</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label jsf:for="firstName">First Name:</label>
+						<input class="form-control" type="text" jsf:id="firstName" placeholder="First Name" jsf:value="#{personForm.firstName}" jsf:label="First Name"/>
+						<div jsfc="h:message" id="msgFirstName" class="text-warning" for="firstName" showSummary="false"><!-- error message --></div>
+					</div>
+					<div class="form-group">
+						<label jsf:for="lastName">Last Name:</label>
+						<input class="form-control" type="text" jsf:id="lastName" placeholder="Last Name" jsf:value="#{personForm.lastName}" jsf:label="Last Name" />
+						<div jsfc="h:message" id="msgLastName" class="text-warning" for="lastName"><!-- error message --></div>
+					</div>
+					<div class="form-group">
+						<label jsf:for="date">Date:</label>
+						<input class="form-control" type="date" jsf:id="date" jsf:value="#{personForm.date}" jsf:label="Date" />
+						<div jsfc="h:message" id="msgdate" class="text-warning" for="date"><!-- error message --></div>
+					</div>
+					<input type="submit"
+						class="btn btn-default"
+						jsf:action="${personFacade.create(personForm.toEntity())}"
+						value="Add" />
+				</div>
+			</div>
+			<table class="table table-condensed table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jsfc="ui:repeat" value="#{personFacade.findAll()}" var="person">
+						<td>#{person.id}</td>
+						<td>#{person.firstName}</td>
+						<td>#{person.lastName}</td>
+						<td>#{person.date}</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

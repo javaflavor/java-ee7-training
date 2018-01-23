@@ -2,7 +2,7 @@
 
 * [Day 1: CDI](./day1-cdi/)
 * [Day 2: JSF](./day2-jsf/)
-* Day 3: JAX-RS
+* [Day 3: JAX-RS](./day3-jaxrs/)
 * Day 4: JPA (part 1)
 * Day 5: JPA (part 2)
 * Day 6: EAP
