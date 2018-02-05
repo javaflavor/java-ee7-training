@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+             
+	<persistence-unit name="TestPU" transaction-type="RESOURCE_LOCAL">
+		<class>com.redhat.example.model.Person</class>
+		<class>com.redhat.example.model.Permission</class>
+		<class>com.redhat.example.model.Permission2</class>
+		<class>com.redhat.example.trace.model.TraceRecord</class>
+		<properties>
+			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true"/>
+
+			<!-- H2 Database -->
+<!-- 			<property name="hibernate.connection.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;TRACE_LEVEL_FILE=3;TRACE_LEVEL_SYSTEM_OUT=2" /> -->
+			<property name="hibernate.connection.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;TRACE_LEVEL_FILE=4" />
+			<property name="hibernate.connection.user" value="sa" />
+			<property name="hibernate.connection.password" value="sa" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+
+		</properties>
+	</persistence-unit>
+</persistence>
