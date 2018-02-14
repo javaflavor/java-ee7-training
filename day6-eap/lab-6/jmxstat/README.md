@@ -29,13 +29,13 @@ JMX APIはJavaのAPIであるため、通常Javaのプログラムを用意し�
 // Server list for collecting JMX metrics.
 
 var servers = [
-        "localhost:9999", "localhost:10099", "localhost:10199", "localhost:10299"
+        "localhost:9990", "localhost:10090", "localhost:10190", "localhost:10290"
 ]
 
 // JMX protocol. EAP6, JDG6: "remoting-jmx" (or "remote"), EAP7 or JDG7: "remote+http" (or "http-remoting-jmx")
 
-var jmx_protocol = "remoting-jmx"
-//var jmx_protocol = "remote+http"
+//var jmx_protocol = "remoting-jmx"
+var jmx_protocol = "remote+http"
 
 // Authentication info: username and password.
 
@@ -65,10 +65,10 @@ var metrics = [
 
 ## jmxstatの実行方法
 
-スクリプトを実行する前に、環境変数JDG_HOMEを設定してください。
+スクリプトを実行する前に、環境変数EAP_HOMEを設定してください。
 
 ~~~
-$ export JDG_HOME=/opt/jboss/jboss-eap-7.0
+$ export EAP_HOME=/opt/jboss/jboss-eap-7.0
 ~~~
 
 また、このスクリプトはJava 8のJDKを必要とします。以下のコマンドを実行し、JDKのバージョンが1.8.0であることを確認してください。
