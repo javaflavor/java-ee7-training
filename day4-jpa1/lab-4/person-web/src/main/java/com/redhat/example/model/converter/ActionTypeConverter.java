@@ -8,7 +8,7 @@ import javax.persistence.Converter;
 
 import com.redhat.example.model.ActionType;
 
-@Converter
+@Converter(autoApply=true)
 public class ActionTypeConverter implements AttributeConverter<List<ActionType>,String> {
 	GenericConverter converter = new GenericConverter();
 
