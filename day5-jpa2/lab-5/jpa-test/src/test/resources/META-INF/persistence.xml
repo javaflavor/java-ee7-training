@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+             
+	<persistence-unit name="OneToOnePU" transaction-type="RESOURCE_LOCAL">
+		<class>com.redhat.example.entity.onetoone.Employee</class>
+		<class>com.redhat.example.entity.onetoone.EmployeeInfo</class>
+		<class>com.redhat.example.entity.onetoone.Mobile</class>
+		<properties>
+			<property name="hibernate.archive.autodetection" value="class" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true"/>
+<!-- 			<property name="hibernate.use_sql_comments" value="true"/> -->
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+
+			<!-- H2 Database -->
+			<property name="hibernate.connection.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1" />
+			<property name="hibernate.connection.user" value="sa" />
+			<property name="hibernate.connection.password" value="sa" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="InheritancePU" transaction-type="RESOURCE_LOCAL">
+		<class>com.redhat.example.entity.inheritance.Base</class>
+		<class>com.redhat.example.entity.inheritance.Sub</class>
+		<class>com.redhat.example.entity.inheritance.Project</class>
+		<class>com.redhat.example.entity.inheritance.InternalProject</class>
+		<class>com.redhat.example.entity.inheritance.CustomerProject</class>
+		<properties>
+			<property name="hibernate.archive.autodetection" value="class" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+
+			<!-- H2 Database -->
+			<property name="hibernate.connection.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1" />
+			<property name="hibernate.connection.user" value="sa" />
+			<property name="hibernate.connection.password" value="sa" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="RelationPU" transaction-type="RESOURCE_LOCAL">
+		<class>com.redhat.example.entity.onetomany.Product</class>
+		<class>com.redhat.example.entity.onetomany.Record</class>
+		<class>com.redhat.example.entity.onetomany.Cart</class>
+		<properties>
+			<property name="hibernate.archive.autodetection" value="class" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+
+			<!-- H2 Database -->
+			<property name="hibernate.connection.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1" />
+			<property name="hibernate.connection.user" value="sa" />
+			<property name="hibernate.connection.password" value="sa" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="ManyToManyPU" transaction-type="RESOURCE_LOCAL">
+		<class>com.redhat.example.entity.manytomany.User</class>
+		<class>com.redhat.example.entity.manytomany.Organization</class>
+		<properties>
+			<property name="hibernate.archive.autodetection" value="class" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+
+			<!-- H2 Database -->
+			<property name="hibernate.connection.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1" />
+			<property name="hibernate.connection.user" value="sa" />
+			<property name="hibernate.connection.password" value="sa" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+
+		</properties>
+	</persistence-unit>
+</persistence>
