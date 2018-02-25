@@ -6,5 +6,5 @@
 * [Day 4: JPA (part 1)](./day4-jpa1/)
 * [Day 5: JPA (part 2)](./day5-jpa2/)
 * [Day 6: EAP](./day6-eap/)
-* Day 7: JBatch
+* [Day 7: JBatch](./day7-jbatch/)
 * Day 8: Discussion
